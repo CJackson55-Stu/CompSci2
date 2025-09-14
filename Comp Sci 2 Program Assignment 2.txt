@@ -1,0 +1,105 @@
+//Caleb Jackson COSC - 1437 -202
+
+
+
+#include <iostream>
+
+#include <iomanip> // For setting decimal precision
+
+#include <limits>  // For input validation
+
+
+
+using namespace std;
+
+
+
+// Function to prompt user input and validate it
+
+double getReplacementCost() {
+
+  double cost;
+
+
+
+  while (true) {
+
+    cout << "Enter the replacement cost of your building: $";
+
+    cin >> cost;
+
+
+
+    // Check if the input is a valid number and not negative
+
+    if (cin.fail()) {
+
+      cin.clear(); // Clear error flag
+
+      cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
+
+      cout << "Invalid input. Please enter a valid number." << endl;
+
+    } else if (cost < 0) {
+
+      cout << "Replacement cost cannot be negative. Please enter a valid number." << endl;
+
+    } else {
+
+      return cost; // Valid input, return the cost
+
+    }
+
+  }
+
+}
+
+
+
+// Function to calculate the minimum insurance
+
+double calculateInsurance(double replacementCost) {
+
+  return replacementCost * 0.80; // 80% of the replacement cost
+
+}
+
+
+
+// Function to display the result
+
+void displayInsuranceAmount(double insuranceAmount) {
+
+  // Set the output format to show 2 decimal places for currency display
+
+  cout << fixed << setprecision(2);
+
+  cout << "The minimum insurance you should purchase is: $" << insuranceAmount << endl;
+
+}
+
+
+
+int main() {
+
+  // Step 1: Get the replacement cost from the user
+
+  double replacementCost = getReplacementCost();
+
+
+
+  // Step 2: Calculate the minimum insurance amount
+
+  double minInsurance = calculateInsurance(replacementCost);
+
+
+
+  // Step 3: Display the result
+
+  displayInsuranceAmount(minInsurance);
+
+
+
+  return 0;
+
+}
