@@ -1,0 +1,23 @@
+#//Caleb Jackson COSC - 1437 -202
+
+count = 0 # Counter for characters per line
+
+
+
+for code in range(32, 128): # ASCII codes 32 to 127
+
+  print(chr(code), end=" ") # Print character with a space
+
+  count += 1
+
+
+
+  # After 16 characters, print a new line
+
+  if count % 16 == 0:
+
+    print()
+
+  }
+
+}
