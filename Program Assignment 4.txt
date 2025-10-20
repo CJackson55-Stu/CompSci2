@@ -1,0 +1,135 @@
+#include <iostream>
+
+using std::cout;
+
+using std::endl;
+
+
+
+// Base class Mammal
+
+class Mammal
+
+{
+
+public:
+
+  Mammal(void) : itsAge(1)
+
+  {
+
+    cout << "Mammal constructor..." << endl;
+
+  }
+
+
+
+  virtual ~Mammal(void)
+
+  {
+
+    cout << "Mammal destructor..." << endl;
+
+  }
+
+
+
+  virtual void Move() const
+
+  {
+
+    cout << "Mammal moves a step!" << endl;
+
+  }
+
+
+
+  virtual void Speak() const
+
+  {
+
+    cout << "What does a mammal speak? Mammilian!" << endl;
+
+  }
+
+
+
+protected:
+
+  int itsAge;
+
+};
+
+
+
+// Derived class Dog
+
+class Dog : public Mammal
+
+{
+
+public:
+
+  Dog(void)
+
+  {
+
+    cout << "Dog constructor..." << endl;
+
+  }
+
+
+
+  ~Dog(void)
+
+  {
+
+    cout << "Dog destructor..." << endl;
+
+  }
+
+
+
+  void Move() const override
+
+  {
+
+    cout << "Dog runs!" << endl;
+
+  }
+
+
+
+  void Speak() const override
+
+  {
+
+    cout << "Woof!" << endl;
+
+  }
+
+};
+
+
+
+int main()
+
+{
+
+  Mammal* pDog = new Dog;
+
+
+
+  pDog->Move();  // Calls Dog::Move()
+
+  pDog->Speak();  // Calls Dog::Speak()
+
+
+
+  delete pDog;   // Proper cleanup calls Dog and Mammal destructors
+
+
+
+  return 0;
+
+}
