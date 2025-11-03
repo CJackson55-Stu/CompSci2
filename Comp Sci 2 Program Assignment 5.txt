@@ -1,0 +1,63 @@
+//Caleb Jackson CS Program Assignment 5
+class GradeProcessor:
+    def __init__(self):
+        self.grades = []
+        self.max_grades = 10
+
+    def input_grades(self):
+        print("Enter quiz grades (0–100). Enter 999 to quit.\n")
+
+        while len(self.grades) < self.max_grades:
+            try:
+                grade = int(input(f"Enter grade #{len(self.grades) + 1}: "))
+
+                if grade == 999:
+                    print("User chose to quit.\n")
+                    break
+
+                if grade < 0 or grade > 100:
+                    print("Invalid input. Grade must be between 0 and 100.\n")
+                    continue
+
+                self.grades.append(grade)
+
+                if len(self.grades) == self.max_grades:
+                    print("10th grade entered — program will end.\n")
+                    break
+
+            except ValueError:
+                print("Invalid input. Please enter a numeric value.\n")
+
+    def compute_average(self):
+        if not self.grades:
+            return 0.0
+        return sum(self.grades) / len(self.grades)
+
+    def get_letter_grade(self, average):
+        if average >= 90:
+            return "A"
+        elif average >= 80:
+            return "B"
+        elif average >= 70:
+            return "C"
+        elif average >= 60:
+            return "D"
+        else:
+            return "F"
+
+    def display_results(self):
+        average = self.compute_average()
+        letter = self.get_letter_grade(average)
+
+        print("\n---------------------------------")
+        print(f"Number of grades entered: {len(self.grades)}")
+        print(f"Average quiz score: {average:.2f}")
+        print(f"Letter grade: {letter}")
+        print("---------------------------------")
+
+
+# --- Main Program ---
+if __name__ == "__main__":
+    gp = GradeProcessor()
+    gp.input_grades()
+    gp.display_results()
