@@ -1,0 +1,43 @@
+//Caleb Jackson COSC - 1437 -202
+//Comp Sci 2 Program Final
+#include <iostream>
+
+using namespace std;
+
+int Factorial(int Num)
+
+{
+
+  // Terminating condition
+
+  if (Num <= 1)
+
+    return 1;
+
+  // Recursive
+
+  else
+
+    return Num * Factorial(Num - 1);
+}
+
+int main()
+
+{
+  int Num;
+
+  cout << "Enter a number to compute its factorial: ";
+
+  cin >> Num;
+
+  if (Num < 0)
+  {
+    cout << "Factorial is not defined for negative numbers." << endl;
+  }
+  else
+  {
+    cout << "Factorial(" << Num << ") = " << Factorial(Num) << endl;
+  }
+
+  return 0;
+}
